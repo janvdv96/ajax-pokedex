@@ -12,29 +12,51 @@
 </head>
 <body>
 
-<div class="container p-4 mt-4">
+<div class="container container-fluid p-4 mt-4">
 
-    <div class="form-row mb-3 border border-dark">
-        <input type="text" id="input" class="rounded-pill form-control">
-        <div class="btn btn-primary " id="run">Search</div>
+    <div class="form-row mb-2">
+        <div class="col-4">
+            <input type="text" id="input" class="rounded-pill form-control">
+        </div>
+        <div class="col-1">
+            <div class="rounded-pill" id="run"></div>
+        </div>
+        <div class="col-7"></div>
     </div>
-    <div class="row mb-3 border border-dark">
-        <div class="col">
-            <div id="nameBox">
+    <div class="row mb-2">
+        <div class="col-5">
+            <div id="nameBox" class="mx-auto">
                 <span id="nameDisplay">Name, ID</span>
             </div>
-            <div id="imgDisplay"></div>
+            <div id="infoDisplay" class="mx-auto">
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-6">
+            <div id="imgDisplay" class="mx-auto">
+            </div>
         </div>
     </div>
-    <div class="row border border-dark">
-        <div class="col">
-            <div id="moveBox">
+    <div class="row">
+        <div class="col-5">
+            <div id="moveBox" class="mx-auto">
                 <ul id="moveList"><span id="moveSpan">Moves:</span>
                     <li id="move1"></li>
                     <li id="move2"></li>
                     <li id="move3"></li>
                     <li id="move4"></li>
                 </ul>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div id="evoDisplay"></div>
+            </div>
+            <div class="row">
+                <div id="groupDisplay"></div>
             </div>
         </div>
     </div>
