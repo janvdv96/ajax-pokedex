@@ -1,6 +1,6 @@
 #imgDisplay{
-    background: white center center no-repeat;
-    background-size: 90%;
+    background: url("src/pokeball.png") center center no-repeat;
+    background-size: 101%;
     width: 350px;
     height: 350px;
     border: 3px solid black;
@@ -111,7 +111,13 @@ table{
 }
 
 tr td{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     text-align: center;
+}
+
+.evoImg{
+    width: 64px;
+    height: 64px;
+    background-size: cover;
 }
 

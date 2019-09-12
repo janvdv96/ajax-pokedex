@@ -15,6 +15,7 @@ const moveListThree = document.getElementById("move3");
 const moveListFour = document.getElementById("move4");
 
 const evoDisplay = document.getElementById("evoDisplay");
+const evoTarget = document.getElementById("evoTarget");
 
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
 
@@ -31,6 +32,7 @@ function init(id) {
         console.log(data);
 
         abiList.innerHTML = "";
+        evoTarget.innerHTML = "";
 
         // Get sprite from API and display it
         let sprite = data.sprites.front_default;
@@ -40,6 +42,7 @@ function init(id) {
             imgDisplay.style.background = "red";
         } else {
             //imgDisplay.style.background = "white center center no-repeat";
+            imgDisplay.style.backgroundColor = "white";
             imgDisplay.style.backgroundImage = "url('" + sprite + "')";
         }
 
@@ -60,7 +63,7 @@ function init(id) {
         let experience = data.base_experience;
         let abilities = [];
 
-        for (i = 0; i < data.abilities.length; i++){
+        for (i = 0; i < data.abilities.length; i++) {
             //abilities.push(data.abilities[i].ability.name);
             let item = document.createElement("li");
             item.innerText = data.abilities[i].ability.name;
@@ -108,14 +111,22 @@ function init(id) {
 
                 console.log("all evo names:", allEvoNames);
 
+                for (i = 0; i < allEvoNames.length; i++) {
+                    fetch("https://pokeapi.co/api/v2/pokemon/" + allEvoNames[i])
+                        .then(function (response) {
+                            return response.json();
+                        }).then(function (evo) {
+                        let evoSprite = evo.sprites.front_default;
 
-                /*fetch("https://pokeapi.co/api/v2/pokemon/" + firstEvo)
-                    .then(function (response) {
-                        return response.json();
-                    }).then(function (firstEvoArray) {
-                        let firstEvoIMG = firstEvoArray.sprites.front_default;
+                        let temp = document.getElementById("evoTemp");
+                        let image = temp.content.querySelector(".evoImg");
+                        image.style.backgroundImage = "url('" + evoSprite + "')";
 
-                })*/
+                        let clone = temp.content.cloneNode(true);
+                        evoTarget.appendChild(clone);
+                    })
+                }
+
             })
         });
 

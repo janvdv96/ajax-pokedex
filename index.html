@@ -73,7 +73,11 @@
 
         <div class="col-6">
             <div class="row">
-                <div id="evoDisplay"></div>
+                <div id="evoDisplay">
+                    <table class="mx-auto justify-content-center">
+                        <tr id="evoTarget"></tr>
+                    </table>
+                </div>
             </div>
             <div class="row">
                 <div id="groupDisplay"></div>
@@ -83,7 +87,9 @@
 </div>
 
 <template id="evoTemp">
-    <div class="evoImg"></div>
+    <td class="evoCell">
+        <div class="evoImg"></div>
+    </td>
 </template>
 
 <script src="app.js"></script>
