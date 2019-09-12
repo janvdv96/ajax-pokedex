@@ -45,7 +45,7 @@
     background-color: crimson;
     border: 3px solid black;
     border-radius: 30px;
-    width: 60%;
+    width: 55%;
 }
 
 #run{
@@ -104,5 +104,14 @@ body{
     background-image: url("src/index.jpeg")  ;
     background-size: 100% ;
     background-attachment: fixed;
+}
+
+table{
+    width: 95%;
+}
+
+tr td{
+    border: 1px solid black;
+    text-align: center;
 }
 

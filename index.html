@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="container container-fluid p-4 mt-4">
+<div class="container container-fluid p-3 mt-2">
 
     <div class="form-row mb-2">
         <div class="col-4">
@@ -23,17 +23,38 @@
         </div>
         <div class="col-7"></div>
     </div>
-    <div class="row mb-2">
+    <div class="row">
         <div class="col-5">
             <div id="nameBox" class="mx-auto">
                 <span id="nameDisplay">Name, ID</span>
             </div>
             <div id="infoDisplay" class="mx-auto">
-
+                <table class="mx-auto mt-2">
+                    <tbody>
+                    <tr>
+                        <td>Height</td>
+                        <td id="heightDisplay">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td id="weightDisplay">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Base Exp</td>
+                        <td id="expDisplay">&nbsp;</td>
+                    </tr>
+                    <tr id="abiDisplay">
+                        <td>Abilities</td>
+                        <td>
+                            <ul id="abiList">
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-1"></div>
-        <div class="col-6">
+        <div class="col-6 p-4">
             <div id="imgDisplay" class="mx-auto">
             </div>
         </div>
@@ -49,9 +70,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-1">
 
-        </div>
         <div class="col-6">
             <div class="row">
                 <div id="evoDisplay"></div>

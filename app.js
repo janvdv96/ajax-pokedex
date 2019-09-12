@@ -1,8 +1,12 @@
-
 const button = document.getElementById("run");
 const input = document.getElementById("input");
 const imgDisplay = document.getElementById("imgDisplay");
 const nameDisplay = document.getElementById("nameDisplay");
+
+const heightDisplay = document.getElementById("heightDisplay");
+const weightDisplay = document.getElementById("weightDisplay");
+const expDisplay = document.getElementById("expDisplay");
+const abiList = document.getElementById("abiList");
 
 const moveList = document.getElementById("moveList");
 const moveListOne = document.getElementById("move1");
@@ -22,9 +26,11 @@ button.addEventListener("click", function () {
 function init(id) {
     fetch("https://pokeapi.co/api/v2/pokemon/" + id)
         .then(function (response) {
-        return response.json();
-    }).then(function (data) {
+            return response.json();
+        }).then(function (data) {
         console.log(data);
+
+        abiList.innerHTML = "";
 
         // Get sprite from API and display it
         let sprite = data.sprites.front_default;
@@ -48,44 +54,59 @@ function init(id) {
             moveListArray[i].innerText = data.moves[random].move.name;
         }
 
+        // Get a lot of data from API and display
+        let height = data.height * 10;
+        let weight = Math.round(data.weight * 0.45);
+        let experience = data.base_experience;
+        let abilities = [];
+
+        for (i = 0; i < data.abilities.length; i++){
+            //abilities.push(data.abilities[i].ability.name);
+            let item = document.createElement("li");
+            item.innerText = data.abilities[i].ability.name;
+            abiList.appendChild(item);
+
+        }
+
+        console.log("abilities: ", abilities);
+
+        heightDisplay.innerText = height + " cm";
+        weightDisplay.innerText = weight + " kg";
+        expDisplay.innerText = experience;
+
+
         // Get evolutions from the API and Display them
         fetch(data.species.url)
             .then(function (response) {
                 return response.json()
             }).then(function (species) {
-            console.log("species: " , species);
+            console.log("species: ", species);
             //console.log(evolutions.chain.evolves_to[0].species.name);
 
             fetch(species.evolution_chain.url)
                 .then(function (response) {
                     return response.json();
                 }).then(function (evolution) {
-                console.log("evo chain: " , evolution);
+                console.log("evo chain: ", evolution);
 
                 let allEvoNames = [];
 
                 allEvoNames.push(evolution.chain.species.name);
 
-                for (i = 0; i < evolution.chain.evolves_to.length; i++){
+                for (i = 0; i < evolution.chain.evolves_to.length; i++) {
 
                     allEvoNames.push(evolution.chain.evolves_to[i].species.name);
                     console.log(evolution.chain.evolves_to[i].species.name);
 
                     console.log(evolution.chain.evolves_to[i].evolves_to.length);
 
-                    for (y = 0; y < evolution.chain.evolves_to[i].evolves_to.length; y++){
+                    for (y = 0; y < evolution.chain.evolves_to[i].evolves_to.length; y++) {
                         allEvoNames.push(evolution.chain.evolves_to[i].evolves_to[y].species.name);
                         console.log("ik geraak tot hier");
                     }
                 }
 
-                let firstEvo = evolution.chain.species.name;
-                let secondEvo = evolution.chain.evolves_to[0].species.name;
-                let thirdEvo = evolution.chain.evolves_to[0].evolves_to[0].species.name;
-
-                //console.log(firstEvo, secondEvo, thirdEvo);
-                console.log("all evo names:" ,allEvoNames);
-
+                console.log("all evo names:", allEvoNames);
 
 
                 /*fetch("https://pokeapi.co/api/v2/pokemon/" + firstEvo)
@@ -98,17 +119,7 @@ function init(id) {
             })
         });
 
-        let experience = data.base_experience ;
-        console.log(experience);
 
-        let learned = data.moves[0].version_group_details[0].level_learned_at ;
-        console.log(learned);
-
-        let height = data.height ;
-        console.log(height);
-
-        let weight = data.weight ;
-        console.log(weight);
     })
 }
 
