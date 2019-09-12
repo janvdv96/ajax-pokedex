@@ -109,6 +109,8 @@ function init(id) {
                 console.log("all evo names:", allEvoNames);
 
 
+
+
                 /*fetch("https://pokeapi.co/api/v2/pokemon/" + firstEvo)
                     .then(function (response) {
                         return response.json();
