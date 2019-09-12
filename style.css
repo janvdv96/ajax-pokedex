@@ -8,7 +8,7 @@
     margin-top: -3px;
 }
 
-#infoDisplay{
+#infoDisplay {
     background: white center center no-repeat;
     background-size: cover;
     height: 300px;
@@ -18,7 +18,7 @@
     margin-top: -3px;
 }
 
-#evoDisplay{
+#evoDisplay {
     background-color: white;
     border: 3px solid black;
     border-radius: 30px;
@@ -28,7 +28,7 @@
     padding: 10px;
 }
 
-#groupDisplay{
+#groupDisplay {
     background-color: white;
     border: 3px solid black;
     border-radius: 30px;
@@ -37,18 +37,18 @@
     padding: 10px;
 }
 
-#nameDisplay{
+#nameDisplay {
     text-transform: capitalize;
 }
 
-.container{
+.container {
     background-color: crimson;
     border: 3px solid black;
     border-radius: 30px;
     width: 55%;
 }
 
-#run{
+#run {
     height: 100%;
     width: 100%;
     margin-left: -10px;
@@ -58,7 +58,7 @@
     cursor: pointer;
 }
 
-#input{
+#input {
     border: 2px solid black;
     text-align: center;
     width: 100%;
@@ -66,7 +66,7 @@
     font-size: 30px;
 }
 
-#moveBox{
+#moveBox {
     background-color: white;
     border: 3px solid black;
     border-radius: 30px;
@@ -75,7 +75,7 @@
     padding: 10px;
 }
 
-#nameBox{
+#nameBox {
 
     background-color: white;
     border: 3px solid black;
@@ -86,33 +86,39 @@
     justify-content: center;
 }
 
-#nameDisplay{
+#nameDisplay {
     font-size: 30px;
 }
 
-#moveList{
+#moveList {
     margin-top: auto;
     margin-bottom: auto;
     font-size: 24px;
 }
 
-#moveSpan{
+#moveSpan {
     font-weight: bold;
 }
 
-body{
-    background-image: url("src/index.jpeg")  ;
-    background-size: 100% ;
+body {
+    background-image: url("src/index.jpeg");
+    background-size: 100%;
     background-attachment: fixed;
 }
 
-table{
+table {
     width: 95%;
 }
 
-tr td{
-    /*border: 1px solid black;*/
+tr td {
+    border: 1px solid black;
     text-align: center;
+}
+
+#abiList {
+    text-align: left;
+    padding: 18px;
+
 }
 
 .evoImg{
