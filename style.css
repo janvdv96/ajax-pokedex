@@ -1,0 +1,67 @@
+#imgDisplay{
+    background: white center center no-repeat;
+    background-size: cover;
+    height: 350px;
+    width: 350px;
+    border: 3px solid black;
+    border-radius: 0 0 30px 30px;
+    margin-top: -3px;
+}
+
+#run{
+    height: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+}
+
+#nameDisplay{
+    text-transform: capitalize;
+}
+
+.container{
+    background-color: crimson;
+    border: 3px solid black;
+    border-radius: 30px;
+}
+
+#input{
+    border: 2px solid black;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+}
+
+#moveBox{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 30px;
+    display: flex;
+    width: 350px;
+    padding: 10px;
+}
+
+#nameBox{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 30px 30px 0 0;
+    display: flex;
+    width: 350px;
+    /*height: 50px;*/
+    justify-content: center;
+}
+
+#nameDisplay{
+    font-size: 36px;
+}
+
+#moveList{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 24px;
+}
+
+#moveSpan{
+    font-weight: bold;
+}

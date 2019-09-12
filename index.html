@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container p-4 mt-4">
+
+    <div class="form-row mb-3 border border-dark">
+        <input type="text" id="input" class="rounded-pill form-control">
+        <div class="btn btn-primary " id="run">Search</div>
+    </div>
+    <div class="row mb-3 border border-dark">
+        <div class="col">
+            <div id="nameBox">
+                <span id="nameDisplay">Name, ID</span>
+            </div>
+            <div id="imgDisplay"></div>
+        </div>
+    </div>
+    <div class="row border border-dark">
+        <div class="col">
+            <div id="moveBox">
+                <ul id="moveList"><span id="moveSpan">Moves:</span>
+                    <li id="move1"></li>
+                    <li id="move2"></li>
+                    <li id="move3"></li>
+                    <li id="move4"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
