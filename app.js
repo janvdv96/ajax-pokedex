@@ -1,3 +1,4 @@
+
 const button = document.getElementById("run");
 const input = document.getElementById("input");
 const imgDisplay = document.getElementById("imgDisplay");
@@ -21,8 +22,8 @@ button.addEventListener("click", function () {
 function init(id) {
     fetch("https://pokeapi.co/api/v2/pokemon/" + id)
         .then(function (response) {
-            return response.json();
-        }).then(function (data) {
+        return response.json();
+    }).then(function (data) {
         console.log(data);
 
         // Get sprite from API and display it
@@ -95,7 +96,19 @@ function init(id) {
 
                 })*/
             })
-        })
+        });
+
+        let experience = data.base_experience ;
+        console.log(experience);
+
+        let learned = data.moves[0].version_group_details[0].level_learned_at ;
+        console.log(learned);
+
+        let height = data.height ;
+        console.log(height);
+
+        let weight = data.weight ;
+        console.log(weight);
     })
 }
 
