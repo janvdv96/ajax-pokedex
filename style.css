@@ -1,8 +1,8 @@
 #imgDisplay{
     background: url("src/pokeball.png") center center no-repeat;
     background-size: 101%;
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
     border: 3px solid black;
     border-radius: 50%;
     margin-top: -3px;
@@ -11,7 +11,7 @@
 #infoDisplay {
     background: white center center no-repeat;
     background-size: cover;
-    height: 300px;
+    height: 200px;
     width: 100%;
     border: 3px solid black;
     border-radius: 0 0 30px 30px;
@@ -101,7 +101,7 @@
 }
 
 body {
-    background-image: url("src/index.jpeg");
+    background-image: url("src/backgr.png");
     background-size: 100%;
     background-attachment: fixed;
 }
