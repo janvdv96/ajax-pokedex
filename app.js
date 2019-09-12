@@ -1,4 +1,3 @@
-
 const button = document.getElementById("run");
 const input = document.getElementById("input");
 const imgDisplay = document.getElementById("imgDisplay");
@@ -10,6 +9,8 @@ const moveListTwo = document.getElementById("move2");
 const moveListThree = document.getElementById("move3");
 const moveListFour = document.getElementById("move4");
 
+const evoDisplay = document.getElementById("evoDisplay");
+
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
 
 button.addEventListener("click", function () {
@@ -20,35 +21,81 @@ button.addEventListener("click", function () {
 function init(id) {
     fetch("https://pokeapi.co/api/v2/pokemon/" + id)
         .then(function (response) {
-        return response.json();
-    }).then(function (data) {
+            return response.json();
+        }).then(function (data) {
         console.log(data);
 
         // Get sprite from API and display it
         let sprite = data.sprites.front_default;
         console.log(sprite);
 
-        if (sprite === null){
+        if (sprite === null) {
             imgDisplay.style.background = "red";
         } else {
             //imgDisplay.style.background = "white center center no-repeat";
-            imgDisplay.style.backgroundImage = "url('" + sprite +"')";
+            imgDisplay.style.backgroundImage = "url('" + sprite + "')";
         }
 
         // Get name and ID from API and display it
         let name = data.species.name;
         let ID = data.id;
-        console.log(name);
         nameDisplay.innerText = name + ", ID: " + ID;
 
         // Get moves from API and display 4 at random
-        for (let i = 0; i < 4; i++){
+        for (let i = 0; i < 4; i++) {
             let random = Math.floor(Math.random() * data.moves.length);
-            console.log("Random: " + random);
             moveListArray[i].innerText = data.moves[random].move.name;
         }
 
         // Get evolutions from the API and Display them
+        fetch(data.species.url)
+            .then(function (response) {
+                return response.json()
+            }).then(function (species) {
+            console.log("species: " , species);
+            //console.log(evolutions.chain.evolves_to[0].species.name);
+
+            fetch(species.evolution_chain.url)
+                .then(function (response) {
+                    return response.json();
+                }).then(function (evolution) {
+                console.log("evo chain: " , evolution);
+
+                let allEvoNames = [];
+
+                allEvoNames.push(evolution.chain.species.name);
+
+                for (i = 0; i < evolution.chain.evolves_to.length; i++){
+
+                    allEvoNames.push(evolution.chain.evolves_to[i].species.name);
+                    console.log(evolution.chain.evolves_to[i].species.name);
+
+                    console.log(evolution.chain.evolves_to[i].evolves_to.length);
+
+                    for (y = 0; y < evolution.chain.evolves_to[i].evolves_to.length; y++){
+                        allEvoNames.push(evolution.chain.evolves_to[i].evolves_to[y].species.name);
+                        console.log("ik geraak tot hier");
+                    }
+                }
+
+                let firstEvo = evolution.chain.species.name;
+                let secondEvo = evolution.chain.evolves_to[0].species.name;
+                let thirdEvo = evolution.chain.evolves_to[0].evolves_to[0].species.name;
+
+                //console.log(firstEvo, secondEvo, thirdEvo);
+                console.log("all evo names:" ,allEvoNames);
+
+
+
+                /*fetch("https://pokeapi.co/api/v2/pokemon/" + firstEvo)
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (firstEvoArray) {
+                        let firstEvoIMG = firstEvoArray.sprites.front_default;
+
+                })*/
+            })
+        })
     })
 }
 
