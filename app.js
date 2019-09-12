@@ -12,6 +12,8 @@ const moveListFour = document.getElementById("move4");
 
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
 
+
+
 button.addEventListener("click", function () {
     let id = input.value;
     init(id);
@@ -49,6 +51,18 @@ function init(id) {
         }
 
         // Get evolutions from the API and Display them
+
+        let experience = data.base_experience ;
+        console.log(experience);
+
+        let learned = data.moves[0].version_group_details[0].level_learned_at ;
+        console.log(learned);
+
+        let height = data.height ;
+        console.log(height);
+
+        let weight = data.weight ;
+        console.log(weight);
     })
 }
 
