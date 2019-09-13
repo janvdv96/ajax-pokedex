@@ -24,7 +24,6 @@ const evoTarget = document.getElementById("evoTarget");
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
 const typesDisplayArray = [typesDisplay1, typesDisplay2];
 
-
 document.body.addEventListener("keyup", function (e) {
     if (e.which === 13) {
         let value = input.value;
@@ -222,6 +221,11 @@ function init(id) {
                         let temp = document.getElementById("evoTemp");
                         let image = temp.content.querySelector(".evoImg");
                         image.style.backgroundImage = "url('" + evoSprite + "')";
+                        image.setAttribute("data", evo.species.name);
+
+                        image.addEventListener("click", function () {
+                           console.log("test");
+                        });
 
                         let clone = temp.content.cloneNode(true);
                         evoTarget.appendChild(clone);
