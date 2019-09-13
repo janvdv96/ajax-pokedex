@@ -7,6 +7,9 @@ const heightDisplay = document.getElementById("heightDisplay");
 const weightDisplay = document.getElementById("weightDisplay");
 const expDisplay = document.getElementById("expDisplay");
 const abiList = document.getElementById("abiList");
+
+const typesDisplay1 = document.getElementById("typesDisplay1");
+const typesDisplay2 = document.getElementById("typesDisplay2");
 const flavorDisplay = document.getElementById("flavorDisplay");
 
 const moveList = document.getElementById("moveList");
@@ -19,6 +22,8 @@ const evoDisplay = document.getElementById("evoDisplay");
 const evoTarget = document.getElementById("evoTarget");
 
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
+const typesDisplayArray = [typesDisplay1, typesDisplay2];
+
 
 document.body.addEventListener("keyup", function (e) {
     if (e.which === 13) {
@@ -71,18 +76,24 @@ function init(id) {
             }
         }
 
+        //Get Types and display them
+        for (i = 0; i < data.types.length; i++) {
+            typesDisplayArray[i].innerText = data.types[i].type.name;
+
+        }
+
         //Get FlavorText from API and Display it
         fetch(data.species.url)
             .then(function (response) {
                 return response.json()
             }).then(function (species) {
 
-                let flavorArray = [];
-                species.flavor_text_entries.forEach(flavorText => {
-                    if (flavorText.language.name === "en"){
-                        flavorArray.push(flavorText.flavor_text);
-                    }
-                });
+            let flavorArray = [];
+            species.flavor_text_entries.forEach(flavorText => {
+                if (flavorText.language.name === "en") {
+                    flavorArray.push(flavorText.flavor_text);
+                }
+            });
 
             let rand = Math.floor(Math.random() * flavorArray.length);
             flavorDisplay.innerText = flavorArray[rand];
