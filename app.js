@@ -7,6 +7,7 @@ const heightDisplay = document.getElementById("heightDisplay");
 const weightDisplay = document.getElementById("weightDisplay");
 const expDisplay = document.getElementById("expDisplay");
 const abiList = document.getElementById("abiList");
+const flavorDisplay = document.getElementById("flavorDisplay");
 
 const moveList = document.getElementById("moveList");
 const moveListOne = document.getElementById("move1");
@@ -18,6 +19,13 @@ const evoDisplay = document.getElementById("evoDisplay");
 const evoTarget = document.getElementById("evoTarget");
 
 const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
+
+document.body.addEventListener("keyup", function (e) {
+    if (e.which === 13) {
+        let id = input.value;
+        init(id);
+    }
+});
 
 button.addEventListener("click", function () {
     let id = input.value;
@@ -39,9 +47,8 @@ function init(id) {
         console.log(sprite);
 
         if (sprite === null) {
-            imgDisplay.style.background = "red";
+            imgDisplay.style.background = "red center center no-repeat";
         } else {
-            //imgDisplay.style.background = "white center center no-repeat";
             imgDisplay.style.backgroundColor = "white";
             imgDisplay.style.backgroundImage = "url('" + sprite + "')";
         }
@@ -52,10 +59,35 @@ function init(id) {
         nameDisplay.innerText = name + ", ID: " + ID;
 
         // Get moves from API and display 4 at random
-        for (let i = 0; i < 4; i++) {
-            let random = Math.floor(Math.random() * data.moves.length);
-            moveListArray[i].innerText = data.moves[random].move.name;
+        if (data.moves.length <= 4) {
+            for (let i = 0; i < data.moves.length; i++) {
+                moveListArray[i].innerText = "";
+                moveListArray[i].innerText = data.moves[i].move.name;
+            }
+        } else {
+            for (let i = 0; i < 4; i++) {
+                let random = Math.floor(Math.random() * data.moves.length);
+                moveListArray[i].innerText = data.moves[random].move.name;
+            }
         }
+
+        //Get FlavorText from API and Display it
+        fetch(data.species.url)
+            .then(function (response) {
+                return response.json()
+            }).then(function (species) {
+
+                let flavorArray = [];
+                species.flavor_text_entries.forEach(flavorText => {
+                    if (flavorText.language.name === "en"){
+                        flavorArray.push(flavorText.flavor_text);
+                    }
+                });
+
+            let rand = Math.floor(Math.random() * flavorArray.length);
+            flavorDisplay.innerText = flavorArray[rand];
+
+        });
 
         // Get a lot of data from API and display
         let height = data.height * 10;
@@ -64,7 +96,6 @@ function init(id) {
         let abilities = [];
 
         for (i = 0; i < data.abilities.length; i++) {
-            //abilities.push(data.abilities[i].ability.name);
             let item = document.createElement("li");
             item.innerText = data.abilities[i].ability.name;
             abiList.appendChild(item);
@@ -84,7 +115,6 @@ function init(id) {
                 return response.json()
             }).then(function (species) {
             console.log("species: ", species);
-            //console.log(evolutions.chain.evolves_to[0].species.name);
 
             fetch(species.evolution_chain.url)
                 .then(function (response) {
@@ -105,7 +135,6 @@ function init(id) {
 
                     for (y = 0; y < evolution.chain.evolves_to[i].evolves_to.length; y++) {
                         allEvoNames.push(evolution.chain.evolves_to[i].evolves_to[y].species.name);
-                        console.log("ik geraak tot hier");
                     }
                 }
 
