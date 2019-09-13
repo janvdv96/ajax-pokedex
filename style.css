@@ -44,8 +44,8 @@
     border: 3px solid black;
     border-radius: 10px;
     width: 77%;
-    height: 100%;
-    padding: 10px;
+    height: 240px;
+    padding: 30px;
     font-size: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -148,12 +148,12 @@ tr td {
 
 ::-webkit-scrollbar {
     height: 5px;
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
     background: none;
-    width: 80%;
 }
 
 /* Handle */
