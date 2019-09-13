@@ -22,13 +22,15 @@ const moveListArray = [moveListOne, moveListTwo, moveListThree, moveListFour];
 
 document.body.addEventListener("keyup", function (e) {
     if (e.which === 13) {
-        let id = input.value;
+        let value = input.value;
+        let id = value.toLowerCase();
         init(id);
     }
 });
 
 button.addEventListener("click", function () {
-    let id = input.value;
+    let value = input.value;
+    let id = value.toLowerCase();
     init(id);
 });
 
@@ -99,7 +101,6 @@ function init(id) {
             let item = document.createElement("li");
             item.innerText = data.abilities[i].ability.name;
             abiList.appendChild(item);
-
         }
 
         console.log("abilities: ", abilities);

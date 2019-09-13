@@ -48,6 +48,7 @@
     padding: 10px;
     font-size: 10px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #nameDisplay {
