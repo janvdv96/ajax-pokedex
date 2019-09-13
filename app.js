@@ -56,7 +56,7 @@ function init(id) {
         console.log(sprite);
 
         if (sprite === null) {
-            imgDisplay.style.background = "red center center no-repeat";
+            imgDisplay.style.background = "url('src/pokeball.png') center center no-repeat";
         } else {
             imgDisplay.style.backgroundColor = "white";
             imgDisplay.style.backgroundImage = "url('" + sprite + "')";
