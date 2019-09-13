@@ -46,6 +46,8 @@ function init(id) {
         }).then(function (data) {
         console.log(data);
 
+        typesDisplay1.style.backgroundImage = "none";
+        typesDisplay2.style.backgroundImage = "none";
         abiList.innerHTML = "";
         evoTarget.innerHTML = "";
 
@@ -63,7 +65,7 @@ function init(id) {
         // Get name and ID from API and display it
         let name = data.species.name;
         let ID = data.id;
-        nameDisplay.innerText = name + ", ID: " + ID;
+        nameDisplay.innerText = name + ", " + ID;
 
         // Get moves from API and display 4 at random
         if (data.moves.length <= 4) {
@@ -80,8 +82,66 @@ function init(id) {
 
         //Get Types and display them
         for (i = 0; i < data.types.length; i++) {
-            typesDisplayArray[i].innerText = data.types[i].type.name;
-
+            console.log("type: ", data.types[i].type.name);
+            switch (data.types[i].type.name) {
+                case "flying":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/flying.png')";
+                    break;
+                case "bug":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/bug.png')";
+                    break;
+                case "dark":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/dark.png')";
+                    break;
+                case "dragon":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/dragon.png')";
+                    break;
+                case "electric":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/electric.png')";
+                    break;
+                case "fairy":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/fairy.png')";
+                    break;
+                case "fighting":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/fighting.png')";
+                    break;
+                case "fire":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/fire.png')";
+                    break;
+                case "ghost":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/ghost.png')";
+                    break;
+                case "grass":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/grass.png')";
+                    break;
+                case "ground":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/ground.png')";
+                    break;
+                case "ice":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/ice.png')";
+                    break;
+                case "normal":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/normal.png')";
+                    break;
+                case "poison":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/poison.png')";
+                    break;
+                case "psychic":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/psychic.png')";
+                    break;
+                case "rock":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/rock.png')";
+                    break;
+                case "steel":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/steel.png')";
+                    break;
+                case "water":
+                    typesDisplayArray[i].style.backgroundImage = "url('src/icons/water.png')";
+                    break;
+                default:
+                    typesDisplayArray[i].style.backgroundImage = "url('https://via.placeholder.com/64')";
+                    break;
+            }
         }
 
         //Get FlavorText from API and Display it
